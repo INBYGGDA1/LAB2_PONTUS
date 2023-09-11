@@ -1,6 +1,6 @@
 /*
  * ================================================================
- * File: Lab2_4.2_snake.c
+ * File: Lab2_4.1_snake.c
  * Author: Pontus Svensson
  * Date: 2023-09-11
  * Description: 
