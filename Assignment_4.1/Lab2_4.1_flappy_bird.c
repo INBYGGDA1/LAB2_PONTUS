@@ -1,4 +1,16 @@
-//*****************************************************************************
+/*
+ * ================================================================
+ * File: Lab2_4.1_flappy_bird.c
+ * Author: Pontus Svensson
+ * Date: 2023-09-11
+ * Description: 
+ *
+ * License: This code is distributed under the MIT License. visit
+ * https://opensource.org/licenses/MIT for more information.
+ * ================================================================
+ */
+
+/*================================================================*/
 #include <stdbool.h>
 #include <stdint.h>
 #include "inc/hw_memmap.h"

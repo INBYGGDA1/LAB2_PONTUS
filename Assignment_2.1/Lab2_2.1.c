@@ -1,10 +1,16 @@
 /*
- * main.c
+ * ================================================================
+ * File: Lab2_2.1.c
+ * Author: Pontus Svensson
+ * Date: 2023-09-11
+ * Description: Control the LED on the BoosterPack MKII using PWM and UART
  *
- *  Created on: 3 sep. 2023
- *      Author: pontus
+ * License: This code is distributed under the MIT License. visit
+ * https://opensource.org/licenses/MIT for more information.
+ * ================================================================
  */
-//*****************************************************************************
+
+/*================================================================*/
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
