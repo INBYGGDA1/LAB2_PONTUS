@@ -307,7 +307,7 @@ int main(void) {
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Set the sequence for sequence number 0, since it will only be utilized by
-  // the microphone and thus will not to be reinitialized.
+  // the microphone and will not need to be reinitialized.
   ADC_newSequence(ADC0_BASE, 0, ADC_CTL_CH8, MIC_SAMPLES);
   while (1) {
     samplesRead = 0;
@@ -320,8 +320,8 @@ int main(void) {
     calculate_average(MIC_SAMPLES, microphone_samples, &microphone_average);
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // I only want to update the values on the LCD if the change is anough to
-    // indicate that the user has done affected the sensors
+    // I only want to update the values on the LCD if the change is big enough
+    // to indicate that the user has done some input to the sensors
     if (abs_diff(microphone_average, microphone_previous) >= PRINT_THRESHOLD) {
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // Enable printing
