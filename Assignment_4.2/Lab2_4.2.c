@@ -2,8 +2,11 @@
  * ================================================================
  * File: Lab2_4.2.c
  * Author: Pontus Svensson
- * Date: 2023-09-11
- * Description:
+ * Date: 2023-10-07
+ * Description: This program displays the values of the microphone,
+ * accelerometer, and potentiometer (joystick) on the LCD screen using the
+ * BoosterPack MKII. To run, the program has to be flashed twice on to the
+ * TM4C129EXL for the proper output to appear!
  *
  * License: This code is distributed under the MIT License. visit
  * https://opensource.org/licenses/MIT for more information.
@@ -15,23 +18,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
 //=============================================================================
 #include "driverlib/gpio.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/pin_map.h"
-#include "driverlib/pwm.h"
 #include "driverlib/adc.h"
-#include "driverlib/uart.h"
-//=============================================================================
-#include "utils/uartstdio.h"
 //=============================================================================
 #include "inc/hw_memmap.h"
 //=============================================================================
-#include "drivers/buttons.h"
-#include "drivers/pinout.h"
 #include "CF128x128x16_ST7735S.h"
 //=============================================================================
 #include "grlib/grlib.h"
@@ -56,18 +51,7 @@ void __error__(char *pcFilename, uint32_t ui32Line) {
 #endif
 
 //=============================================================================
-// Configure the UART. Used for debugging purposes
-//=============================================================================
-void ConfigureUART(void) {
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-  GPIOPinConfigure(GPIO_PA0_U0RX);
-  GPIOPinConfigure(GPIO_PA1_U0TX);
-  GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-  UARTClockSourceSet(UART0_BASE, UART_CLOCK_PIOSC);
-  UARTStdioConfig(0, 115200, 16000000);
-}
-
+// Helper function to reinitialize the ADC to sample on another channel
 //=============================================================================
 void ADC_newSequence(uint32_t ui32base, uint32_t ui32SequenceNum,
                      uint32_t ui32ADC_Channel, uint32_t ui32Samples) {
@@ -272,8 +256,6 @@ int main(void) {
                           SYSCTL_CFG_VCO_480),
                          120000000);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ConfigureUART();
-  UARTprintf("\033[2J");
   ADC_init();
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Function to initialize the LCD using the TiwaWare peripheral driver library
