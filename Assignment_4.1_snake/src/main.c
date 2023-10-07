@@ -53,7 +53,7 @@ int main(void) {
                           SYSCTL_CFG_VCO_480),
                          120000000);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ADC_init(SYSCTL_PERIPH_ADC0);
+  PERIPH_init(SYSCTL_PERIPH_ADC0);
   SENSOR_enable(JOYSTICK | BUTTON_UP | BUTTON_DOWN);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Function to initialize the LCD using the TiwaWare peripheral driver library
@@ -87,4 +87,6 @@ int main(void) {
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ADC_newSequence(ADC0_BASE, 0, ADC_CTL_CH9, MIC_SAMPLES);
+  while (1) {
+  }
 }

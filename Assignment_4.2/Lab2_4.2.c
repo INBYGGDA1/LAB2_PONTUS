@@ -100,8 +100,7 @@ int main(void) {
                           SYSCTL_CFG_VCO_480),
                          120000000);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ADC_init(SYSCTL_PERIPH_ADC0);
-  GPIOPort_init(SYSCTL_PERIPH_GPIOE);
+  PERIPH_init(SYSCTL_PERIPH_ADC0);
   SENSOR_enable(JOYSTICK | MICROPHONE | ACCELEROMETER);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Function to initialize the LCD using the TiwaWare peripheral driver library
