@@ -86,7 +86,7 @@ int main(void) {
   GrFlush(&Context);
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ADC_newSequence(ADC0_BASE, 0, ADC_CTL_CH9, MIC_SAMPLES);
+  ADC_newSequence(ADC0_BASE, 0, ADC_CTL_CH9, JOY_SAMPLES);
   while (1) {
   }
 }
