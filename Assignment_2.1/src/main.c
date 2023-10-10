@@ -21,25 +21,16 @@
 #include "driverlib/pwm.h"
 #include "driverlib/adc.h"
 
-#include "utils/uartstdio.c"
+#include "driverlib/sysctl.h"
+#include "driverlib/uart.h"
+#include "inc/hw_memmap.h"
+#include "utils/uartstdio.h"
 #include "drivers/buttons.h"
 #include "drivers/pinout.h"
+#include "../drivers/tm4c129_functions.h"
 
 #define PWM_LED GPIO_PIN_2
 
-//***********************************************************************
-//                       Configurations
-//***********************************************************************
-// Configure the UART.
-void ConfigureUART() {
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-  GPIOPinConfigure(GPIO_PA0_U0RX);
-  GPIOPinConfigure(GPIO_PA1_U0TX);
-  GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-  UARTClockSourceSet(UART0_BASE, UART_CLOCK_PIOSC);
-  UARTStdioConfig(0, 115200, 16000000);
-}
 // on 100% The lowest is 10, where the led will turn off
 // This is to prevent the pwm cycle to reset and start counting down from 100%
 
